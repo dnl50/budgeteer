@@ -12,6 +12,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.string.StringValue;
 import org.keycloak.KeycloakPrincipal;
 import org.keycloak.representations.AccessToken;
+import org.wickedsource.budgeteer.service.project.ProjectService;
 import org.wickedsource.budgeteer.web.BudgeteerReferences;
 import org.wickedsource.budgeteer.web.BudgeteerSession;
 import org.wickedsource.budgeteer.web.BudgeteerSettings;

@@ -39,6 +39,7 @@ public class BudgetDetailsPage extends BasePage {
     @SpringBean
     private BudgetService budgetService;
 
+
     private IModel<BudgetDetailData> model;
 
     public BudgetDetailsPage(PageParameters parameters) {
