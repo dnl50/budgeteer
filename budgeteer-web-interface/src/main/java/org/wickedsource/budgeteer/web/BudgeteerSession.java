@@ -19,6 +19,8 @@ public class BudgeteerSession extends WebSession {
 
     private boolean taxEnabled;
 
+    private boolean isInProject = false;
+
     private User loggedInUser;
 
     private long projectId;
@@ -96,5 +98,13 @@ public class BudgeteerSession extends WebSession {
 
     public void setRemainingBudetFilterValue(Long budgetRemainingFilter) {
         this.remainingBudgetFilterValue = budgetRemainingFilter;
+    }
+
+    public boolean isInProject() {
+        return isInProject;
+    }
+
+    public void setInProject(boolean inProject) {
+        isInProject = inProject;
     }
 }

@@ -73,11 +73,7 @@ public abstract class BasePage extends WebPage {
         HashSet<String> roles = loadRolesFromCurrentUser();
         if (roles != null && roles.contains("admin")) {
             return true;
-        } else if (roles == null) {
-            return true;
-        } else {
-            return false;
-        }
+        } else return roles == null;
     }
 
     private HashSet<String> loadRolesFromCurrentUser() {
@@ -108,7 +104,7 @@ public abstract class BasePage extends WebPage {
                 if (settings.isKeycloakActivated()) {
                     setResponsePage(new SelectProjectWithKeycloakPage());
                 } else {
-                    setResponsePage(new SelectProjectPage(this.getWebPage().getClass(), new PageParameters()));
+                    setResponsePage(new SelectProjectPage(this.getWebPage().getClass(),this.getPage().getPageParameters()));
                 }
             }
         };

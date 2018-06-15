@@ -24,7 +24,6 @@ import org.wickedsource.budgeteer.web.pages.user.login.LoginPage;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
-
 @Mount("/selectProjectWithKeycloak")
 public class SelectProjectWithKeycloakPage extends DialogPage {
 
@@ -54,6 +53,7 @@ public class SelectProjectWithKeycloakPage extends DialogPage {
                 try {
                     ProjectBaseData project = projectService.createProject(getModelObject(), BudgeteerSession.get().getLoggedInUser().getId());
                     BudgeteerSession.get().setProjectId(project.getId());
+                    BudgeteerSession.get().setInProject(true);
                     setResponsePage(DashboardPage.class);
                 }catch (ProjectNameAlreadyInUseException exception){
                     this.error(getString("newProjectForm.projectName.AlreadyInUse"));
@@ -102,6 +102,7 @@ public class SelectProjectWithKeycloakPage extends DialogPage {
             @Override
             protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
                 BudgeteerSession.get().setProjectId(((ProjectBaseData) form.getModelObject()).getId());
+                BudgeteerSession.get().setInProject(true);
                 setResponsePage(DashboardPage.class);
             }
         };

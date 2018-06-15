@@ -1,10 +1,11 @@
 package org.wickedsource.budgeteer.web.pages.dashboard;
 
-
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.wickedsource.budgeteer.web.BudgeteerSession;
 import org.wickedsource.budgeteer.web.Mount;
+import org.wickedsource.budgeteer.web.components.security.NeedsLogin;
+import org.wickedsource.budgeteer.web.components.security.NeedsProject;
 import org.wickedsource.budgeteer.web.pages.base.basepage.BasePage;
 import org.wickedsource.budgeteer.web.pages.base.basepage.breadcrumbs.BreadcrumbsModel;
 import org.wickedsource.budgeteer.web.pages.budgets.overview.BudgetsOverviewPage;
@@ -20,6 +21,7 @@ import org.wickedsource.budgeteer.web.pages.person.overview.PeopleOverviewPage;
 import org.wickedsource.budgeteer.web.pages.templates.TemplatesPage;
 
 @Mount("dashboard")
+@NeedsProject
 public class DashboardPage extends BasePage {
 
     /**

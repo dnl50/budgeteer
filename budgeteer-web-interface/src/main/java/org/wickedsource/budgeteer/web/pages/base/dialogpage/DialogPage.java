@@ -6,6 +6,7 @@ import org.apache.wicket.markup.head.filter.HeaderResponseContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wickedsource.budgeteer.web.BudgeteerReferences;
+import org.wickedsource.budgeteer.web.components.security.NeedsLogin;
 
 public class DialogPage extends WebPage {
 

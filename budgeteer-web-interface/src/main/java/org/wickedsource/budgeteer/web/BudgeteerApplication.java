@@ -49,7 +49,7 @@ public class BudgeteerApplication extends WebApplication implements ApplicationC
         mountPages();
 
         getSecuritySettings().setAuthorizationStrategy(new BudgeteerAuthorizationStrategy());
-        getSecuritySettings().setUnauthorizedComponentInstantiationListener(new BudgeteerUnauthorizedComponentInstantiationListener());
+        getSecuritySettings().setUnauthorizedComponentInstantiationListener(new BudgeteerUnauthorizedComponentInstantiationListener(settings.isKeycloakActivated()));
         setHeaderResponseDecorator(new JavaScriptToBucketResponseDecorator("JavaScriptContainer"));
     }
 

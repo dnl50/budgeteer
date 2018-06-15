@@ -19,10 +19,12 @@ import org.wickedsource.budgeteer.service.user.UserService;
 import org.wickedsource.budgeteer.web.BudgeteerSession;
 import org.wickedsource.budgeteer.web.Mount;
 import org.wickedsource.budgeteer.web.components.customFeedback.CustomFeedbackPanel;
+import org.wickedsource.budgeteer.web.components.security.NeedsLogin;
 import org.wickedsource.budgeteer.web.pages.base.dialogpage.DialogPageWithBacklink;
 import org.wickedsource.budgeteer.web.pages.dashboard.DashboardPage;
 import org.wickedsource.budgeteer.web.pages.user.login.LoginPage;
 
+@NeedsLogin
 @Mount("/selectProject")
 public class SelectProjectPage extends DialogPageWithBacklink {
 
@@ -54,6 +56,7 @@ public class SelectProjectPage extends DialogPageWithBacklink {
                 try {
                     ProjectBaseData project = projectService.createProject(getModelObject(), BudgeteerSession.get().getLoggedInUser().getId());
                     BudgeteerSession.get().setProjectId(project.getId());
+                    BudgeteerSession.get().setInProject(true);
                     setResponsePage(DashboardPage.class);
                 }catch (ProjectNameAlreadyInUseException exception){
                     this.error(getString("newProjectForm.projectName.AlreadyInUse"));
@@ -102,6 +105,7 @@ public class SelectProjectPage extends DialogPageWithBacklink {
             @Override
             protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
                 BudgeteerSession.get().setProjectId(((ProjectBaseData) form.getModelObject()).getId());
+                BudgeteerSession.get().setInProject(true);
                 setResponsePage(DashboardPage.class);
             }
         };
@@ -116,6 +120,8 @@ public class SelectProjectPage extends DialogPageWithBacklink {
         return new Link(id) {
             @Override
             public void onClick() {
+                BudgeteerSession.get().setInProject(false);
+                BudgeteerSession.get().logout();
                 setResponsePage(LoginPage.class);
             }
         };
