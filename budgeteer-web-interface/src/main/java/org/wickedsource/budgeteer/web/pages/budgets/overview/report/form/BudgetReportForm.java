@@ -20,6 +20,7 @@ import org.wickedsource.budgeteer.service.template.TemplateService;
 import org.wickedsource.budgeteer.web.BudgeteerSession;
 import org.wickedsource.budgeteer.web.components.customFeedback.CustomFeedbackPanel;
 import org.wickedsource.budgeteer.web.components.daterange.DateRangeInputField;
+import org.wickedsource.budgeteer.web.components.form.CsrfSecureForm;
 import org.wickedsource.budgeteer.web.components.notificationlist.NotificationListPanel;
 import org.wickedsource.budgeteer.web.pages.base.AbstractChoiceRenderer;
 import org.wickedsource.budgeteer.web.pages.budgets.overview.report.BudgetReportFileModel;
@@ -32,7 +33,7 @@ import java.util.List;
 import static org.wicketstuff.lazymodel.LazyModel.from;
 import static org.wicketstuff.lazymodel.LazyModel.model;
 
-public class BudgetReportForm extends Form<ReportMetaInformation> {
+public class BudgetReportForm extends CsrfSecureForm<ReportMetaInformation> {
 
     /**
      *

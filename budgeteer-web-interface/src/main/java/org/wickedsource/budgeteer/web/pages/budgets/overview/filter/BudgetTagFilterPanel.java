@@ -12,6 +12,7 @@ import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 import org.wickedsource.budgeteer.service.budget.BudgetTagFilter;
 import org.wickedsource.budgeteer.web.BudgeteerSession;
+import org.wickedsource.budgeteer.web.components.form.CsrfSecureForm;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class BudgetTagFilterPanel extends Panel {
 
     public BudgetTagFilterPanel(String id, IModel<List<String>> tagsModel) {
         super(id);
-        Form<BudgetTagFilter> form = new Form<BudgetTagFilter>("filterForm") {
+        Form<BudgetTagFilter> form = new CsrfSecureForm<BudgetTagFilter>("filterForm") {
             @Override
             protected void onSubmit() {
                 send(getPage(), Broadcast.BREADTH, getFilter());

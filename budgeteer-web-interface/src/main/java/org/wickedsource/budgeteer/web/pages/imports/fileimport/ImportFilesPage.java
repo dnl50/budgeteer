@@ -30,6 +30,7 @@ import org.wickedsource.budgeteer.web.BudgeteerSession;
 import org.wickedsource.budgeteer.web.ClassAwareWrappingModel;
 import org.wickedsource.budgeteer.web.Mount;
 import org.wickedsource.budgeteer.web.components.customFeedback.CustomFeedbackPanel;
+import org.wickedsource.budgeteer.web.components.form.CsrfSecureForm;
 import org.wickedsource.budgeteer.web.pages.base.dialogpage.DialogPageWithBacklink;
 
 import javax.servlet.http.HttpServletResponse;
@@ -57,7 +58,7 @@ public class ImportFilesPage extends DialogPageWithBacklink {
         super(backlinkPage, backlinkParameters);
         add(createBacklink("backlink1"));
 
-        final Form<ImportFormBean> form = new Form<ImportFormBean>("importForm", new ClassAwareWrappingModel<ImportFormBean>(new Model<ImportFormBean>(new ImportFormBean()), ImportFormBean.class)) {
+        final Form<ImportFormBean> form = new CsrfSecureForm<ImportFormBean>("importForm", new ClassAwareWrappingModel<ImportFormBean>(new Model<ImportFormBean>(new ImportFormBean()), ImportFormBean.class)) {
             @Override
             protected void onSubmit() {
                 try {

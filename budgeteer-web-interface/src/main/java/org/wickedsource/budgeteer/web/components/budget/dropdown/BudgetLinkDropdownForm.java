@@ -10,13 +10,14 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wickedsource.budgeteer.service.budget.BudgetService;
 import org.wickedsource.budgeteer.web.BudgeteerSession;
+import org.wickedsource.budgeteer.web.components.form.CsrfSecureForm;
 import org.wickedsource.budgeteer.web.pages.budgets.monthreport.single.SingleBudgetMonthReportPage;
 import org.wickedsource.budgeteer.web.pages.budgets.weekreport.single.SingleBudgetWeekReportPage;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class BudgetLinkDropdownForm extends Form<BudgetOption> {
+public class BudgetLinkDropdownForm extends CsrfSecureForm<BudgetOption> {
 
     private BudgetLinkType linkType;
 

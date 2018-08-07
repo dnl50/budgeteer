@@ -22,6 +22,7 @@ import org.wickedsource.budgeteer.service.ReportType;
 import org.wickedsource.budgeteer.service.template.TemplateService;
 import org.wickedsource.budgeteer.web.BudgeteerSession;
 import org.wickedsource.budgeteer.web.components.customFeedback.CustomFeedbackPanel;
+import org.wickedsource.budgeteer.web.components.form.CsrfSecureForm;
 import org.wickedsource.budgeteer.web.pages.base.AbstractChoiceRenderer;
 import org.wickedsource.budgeteer.web.pages.base.delete.DeleteDialog;
 import org.wickedsource.budgeteer.web.pages.templates.TemplatesPage;
@@ -37,7 +38,7 @@ import java.util.concurrent.Callable;
 import static org.wicketstuff.lazymodel.LazyModel.from;
 import static org.wicketstuff.lazymodel.LazyModel.model;
 
-public class EditTemplateForm extends Form<TemplateFormInputDto> {
+public class EditTemplateForm extends CsrfSecureForm<TemplateFormInputDto> {
 
     @SpringBean
     private TemplateService service;

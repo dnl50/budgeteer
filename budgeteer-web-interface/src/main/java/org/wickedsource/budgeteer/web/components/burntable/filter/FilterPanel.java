@@ -15,6 +15,7 @@ import org.wickedsource.budgeteer.service.record.WorkRecordFilter;
 import org.wickedsource.budgeteer.web.BudgeteerSession;
 import org.wickedsource.budgeteer.web.components.budget.BudgetBaseDataChoiceRenderer;
 import org.wickedsource.budgeteer.web.components.daterange.DateRangeInputField;
+import org.wickedsource.budgeteer.web.components.form.CsrfSecureForm;
 import org.wickedsource.budgeteer.web.components.multiselect.MultiselectBehavior;
 import org.wickedsource.budgeteer.web.components.person.PersonBaseDataChoiceRenderer;
 import org.wicketstuff.lazymodel.LazyModel;
@@ -43,7 +44,7 @@ public class FilterPanel extends Panel {
     public FilterPanel(String id, WorkRecordFilter filter) {
         super(id, model(from(filter)));
         IModel<WorkRecordFilter> model = (IModel<WorkRecordFilter>) getDefaultModel();
-        Form<WorkRecordFilter> form = new Form<WorkRecordFilter>("filterForm", model) {
+        Form<WorkRecordFilter> form = new CsrfSecureForm<WorkRecordFilter>("filterForm", model) {
             @Override
             protected void onSubmit() {
                 send(getPage(), Broadcast.BREADTH, getModel().getObject());

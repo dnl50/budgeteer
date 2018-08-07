@@ -22,6 +22,7 @@ import org.wickedsource.budgeteer.service.budget.BudgetService;
 import org.wickedsource.budgeteer.service.person.PersonRate;
 import org.wickedsource.budgeteer.web.BudgeteerSession;
 import org.wickedsource.budgeteer.web.components.daterange.DateRangeInputField;
+import org.wickedsource.budgeteer.web.components.form.CsrfSecureForm;
 import org.wickedsource.budgeteer.web.components.listMultipleChoiceWithGroups.OptionGroup;
 import org.wickedsource.budgeteer.web.components.money.MoneyTextField;
 import org.wickedsource.budgeteer.web.components.multiselect.MultiselectBehavior;
@@ -54,7 +55,7 @@ public abstract class PersonEditPanel extends Panel {
         List<OptionGroup<BudgetBaseData>> possibleBudgets =
                 budgetService.getPossibleBudgetDataForPersonAndProject(BudgeteerSession.get().getProjectId(), data.getPersonId());
 
-        Form<PersonRateFormDto> form = new Form<>("addRateForm", new Model<>(data));
+        Form<PersonRateFormDto> form = new CsrfSecureForm<>("addRateForm", new Model<>(data));
         form.setOutputMarkupId(true);
         form.add(dateRangeField);
         form.add(rateField);

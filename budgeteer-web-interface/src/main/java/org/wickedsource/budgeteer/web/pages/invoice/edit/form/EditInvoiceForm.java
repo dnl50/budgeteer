@@ -20,6 +20,7 @@ import org.wickedsource.budgeteer.service.invoice.InvoiceService;
 import org.wickedsource.budgeteer.web.components.customFeedback.CustomFeedbackPanel;
 import org.wickedsource.budgeteer.web.components.daterange.DateInputField;
 import org.wickedsource.budgeteer.web.components.fileUpload.CustomFileUpload;
+import org.wickedsource.budgeteer.web.components.form.CsrfSecureForm;
 import org.wickedsource.budgeteer.web.components.money.MoneyTextField;
 import org.wickedsource.budgeteer.web.components.monthRenderer.MonthRenderer;
 
@@ -29,7 +30,7 @@ import java.util.List;
 import static org.wicketstuff.lazymodel.LazyModel.from;
 import static org.wicketstuff.lazymodel.LazyModel.model;
 
-public class EditInvoiceForm  extends Form<InvoiceBaseData> {
+public class EditInvoiceForm extends CsrfSecureForm<InvoiceBaseData> {
 
     @SpringBean
     private InvoiceService service;

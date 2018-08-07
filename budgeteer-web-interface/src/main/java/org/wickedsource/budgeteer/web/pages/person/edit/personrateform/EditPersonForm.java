@@ -26,6 +26,7 @@ import org.wickedsource.budgeteer.service.person.PersonWithRates;
 import org.wickedsource.budgeteer.web.BudgeteerSession;
 import org.wickedsource.budgeteer.web.components.customFeedback.CustomFeedbackPanel;
 import org.wickedsource.budgeteer.web.components.dataTable.DataTableBehavior;
+import org.wickedsource.budgeteer.web.components.form.CsrfSecureForm;
 import org.wickedsource.budgeteer.web.components.listMultipleChoiceWithGroups.OptionGroup;
 import org.wickedsource.budgeteer.web.pages.person.edit.IEditPersonPageStrategy;
 
@@ -34,7 +35,7 @@ import java.util.*;
 import static org.wicketstuff.lazymodel.LazyModel.from;
 import static org.wicketstuff.lazymodel.LazyModel.model;
 
-public class EditPersonForm extends Form<PersonWithRates> {
+public class EditPersonForm extends CsrfSecureForm<PersonWithRates> {
 
     @SpringBean
     private PersonService peopleService;

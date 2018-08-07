@@ -11,6 +11,7 @@ import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.joda.money.Money;
 import org.wickedsource.budgeteer.web.components.dataTable.CustomDataTableEventBehavior;
+import org.wickedsource.budgeteer.web.components.form.CsrfSecureForm;
 import org.wickedsource.budgeteer.web.components.money.MoneyLabel;
 import org.wickedsource.budgeteer.web.components.money.MoneyTextField;
 
@@ -40,7 +41,7 @@ public abstract class EditableMoneyField extends GenericPanel<Money> {
         label.setOutputMarkupId(true);
         this.add(label);
 
-        form = new Form<Money>("editor", getModel()){
+        form = new CsrfSecureForm<Money>("editor", getModel()){
             @Override
             public boolean isVisible() {
                 return isEditable;

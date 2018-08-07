@@ -22,6 +22,7 @@ import org.wickedsource.budgeteer.web.ClassAwareWrappingModel;
 import org.wickedsource.budgeteer.web.Mount;
 import org.wickedsource.budgeteer.web.components.customFeedback.CustomFeedbackPanel;
 import org.wickedsource.budgeteer.web.components.daterange.DateRangeInputField;
+import org.wickedsource.budgeteer.web.components.form.CsrfSecureForm;
 import org.wickedsource.budgeteer.web.pages.base.basepage.BasePage;
 import org.wickedsource.budgeteer.web.pages.base.basepage.breadcrumbs.BreadcrumbsModel;
 import org.wickedsource.budgeteer.web.pages.base.delete.DeleteDialog;
@@ -57,7 +58,7 @@ public class ProjectAdministrationPage extends BasePage {
     }
 
     private Form<Project> createEditProjectForm(String formId) {
-        Form<Project> form = new Form<Project>(formId, model(from(projectService.findProjectById(BudgeteerSession.get().getProjectId())))) {
+        Form<Project> form = new CsrfSecureForm<Project>(formId, model(from(projectService.findProjectById(BudgeteerSession.get().getProjectId())))) {
             @Override
             protected void onSubmit() {
                 super.onSubmit();
@@ -116,7 +117,7 @@ public class ProjectAdministrationPage extends BasePage {
     }
 
     private Form<User> createAddUserForm(String id) {
-        Form<User> form = new Form<User>(id, new Model<>(new User())) {
+        Form<User> form = new CsrfSecureForm<User>(id, new Model<>(new User())) {
             @Override
             protected void onSubmit() {
                 userService.addUserToProject(BudgeteerSession.get().getProjectId(), getModelObject().getId());

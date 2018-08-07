@@ -10,6 +10,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.wickedsource.budgeteer.service.ReportType;
 import org.wickedsource.budgeteer.web.BudgeteerSession;
+import org.wickedsource.budgeteer.web.components.form.CsrfSecureForm;
 import org.wickedsource.budgeteer.web.components.multiselect.MultiselectBehavior;
 import org.wickedsource.budgeteer.web.pages.base.AbstractChoiceRenderer;
 import org.wicketstuff.lazymodel.LazyModel;
@@ -29,7 +30,7 @@ public class TemplateFilterPanel extends Panel {
     public TemplateFilterPanel(String id, TemplateFilter filter) {
         super(id, model(from(filter)));
         IModel<TemplateFilter> model = (IModel<TemplateFilter>) getDefaultModel();
-        Form<TemplateFilter> form = new Form<TemplateFilter>("filterForm", model);
+        Form<TemplateFilter> form = new CsrfSecureForm<>("filterForm", model);
         form.add(createTypeFilter("typesFilterContainer", form));
         add(form);
     }
