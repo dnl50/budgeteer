@@ -44,21 +44,24 @@ public class CsrfSecureForm<T> extends Form<T> {
     public void onComponentTagBody(MarkupStream markupStream, ComponentTag openTag) {
         if(isRootForm()) {
             HttpServletRequest request = (HttpServletRequest) getRequest().getContainerRequest();
-            List<Cookie> cookieList = Arrays.asList(request.getCookies());
 
-            Optional<Cookie> csrfTokenCookie = cookieList.stream()
-                    .filter(cookie -> CSRF_COOKIE_NAME.equals(cookie.getName()))
-                    .findFirst();
+            if(request != null && request.getCookies() != null) {
+                List<Cookie> cookieList = Arrays.asList(request.getCookies());
 
-            if(csrfTokenCookie.isPresent()) {
-                AppendingStringBuffer buffer = new AppendingStringBuffer().append(
-                        "<input type=\"hidden\" name=\"")
-                        .append(HIDDEN_CSRF_INPUT_NAME)
-                        .append("\" value=\"")
-                        .append(csrfTokenCookie.get().getValue())
-                        .append("\" />");
+                Optional<Cookie> csrfTokenCookie = cookieList.stream()
+                        .filter(cookie -> CSRF_COOKIE_NAME.equals(cookie.getName()))
+                        .findFirst();
 
-                getResponse().write(buffer);
+                if(csrfTokenCookie.isPresent()) {
+                    AppendingStringBuffer buffer = new AppendingStringBuffer().append(
+                            "<input type=\"hidden\" name=\"")
+                            .append(HIDDEN_CSRF_INPUT_NAME)
+                            .append("\" value=\"")
+                            .append(csrfTokenCookie.get().getValue())
+                            .append("\" />");
+
+                    getResponse().write(buffer);
+                }
             }
         }
 
