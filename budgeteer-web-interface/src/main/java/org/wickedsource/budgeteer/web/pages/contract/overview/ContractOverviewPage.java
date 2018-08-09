@@ -16,6 +16,7 @@ import org.wickedsource.budgeteer.web.Mount;
 import org.wickedsource.budgeteer.web.components.tax.TaxSwitchLabelModel;
 import org.wickedsource.budgeteer.web.pages.base.basepage.BasePage;
 import org.wickedsource.budgeteer.web.pages.base.basepage.breadcrumbs.BreadcrumbsModel;
+import org.wickedsource.budgeteer.web.pages.contract.projectContractField.EditContractFieldPage;
 import org.wickedsource.budgeteer.web.pages.contract.edit.EditContractPage;
 import org.wickedsource.budgeteer.web.pages.contract.overview.report.ContractReportDialog;
 import org.wickedsource.budgeteer.web.pages.contract.overview.table.ContractOverviewTable;
@@ -47,6 +48,7 @@ public class ContractOverviewPage extends BasePage{
 
         add(createReportLink("createReportLink"));
         add(createNetGrossLink("netGrossLink"));
+        add(createAdditionalInfoTagLink("additionalInfoTagLink"));
     }
 
 
@@ -83,6 +85,17 @@ public class ContractOverviewPage extends BasePage{
         }
         return link;
 	}
+
+	private Component createAdditionalInfoTagLink(String string) {
+        return new Link(string) {
+
+            @Override
+            public void onClick() {
+                setResponsePage(new EditContractFieldPage(ContractOverviewPage.class, getPageParameters()));
+            }
+
+        };
+    }
 
     @SuppressWarnings("unchecked")
     @Override
